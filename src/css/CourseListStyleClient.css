@@ -4,6 +4,12 @@
     font-style: italic;
     font-weight: bolder;
     font-size: larger;
-
 }
 
+#newCourse{
+    width: 100%;
+    height: 60px;
+    padding-left: 1%!important;
+    font-size: large;
+    font-style: italic;
+}
