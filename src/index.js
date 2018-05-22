@@ -8,13 +8,14 @@ import Stateless from './components/Stateless.js';
 import ModuleListItem from './components/ModuleListItem.js';
 import ModuleList from "./containers/ModuleList";
 import App from "./examples/App.js";
+import  "./css/CourseListStyleClient.css";
 
 ReactDOM.render(
     //<CourseManager/>,
     <div className="container-fluid">
      {/*<ModuleList/>
      <Stateless message="hello anuroopa!!!"/>*/}
-     <App/>
+     <CourseManager/>
     </div>,
     document.getElementById('root')
 );

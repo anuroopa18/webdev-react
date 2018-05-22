@@ -1,0 +1,9 @@
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    font-color: white!important;
+    color : white;
+    font-style: italic;
+    font-weight: bolder;
+    font-size: larger;
+
+}
+
