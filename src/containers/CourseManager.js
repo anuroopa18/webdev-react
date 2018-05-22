@@ -1,5 +1,5 @@
 import React , {Component} from 'react';
-import CourseList from '../components/CourseList'
+import CourseList from './CourseList'
 
 export default class CourseManager extends Component {
     render() { return (
@@ -18,7 +18,7 @@ export default class CourseManager extends Component {
                 <input style={{"background-color":"#4d94ff","border":"1px solid #4d94ff"}} className="form-control form-control-lg mr-sm-2" id="newCourse" type="text" placeholder="New Course Title" aria-describedby="New Course"/>
 
                 <span>
-                  <i className="fas fa-plus-circle fa-3x fa fa-times"  style={{"color": "red","background-color": "white","border-radius": "67%","height": "40px","width": "40px","font-size": "48px","margin-top": "-2px","padding-top": "-20px"}}></i>
+                  <i className="fas fa-plus-circle fa-3x fa fa-times"  style={{"color": "red","background-color": "white","border-radius": "67%","height": "48px","width": "44px","font-size": "51px","margin-top": "-2px","padding-top": "-20px"}}></i>
               </span>
 
             </div>
