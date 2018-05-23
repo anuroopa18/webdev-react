@@ -15,6 +15,8 @@ export default class LessonTabs extends Component{
         this.setCourseId = this.setCourseId.bind(this);
         this.setModuleId = this.setModuleId.bind(this);
         this.setLessonTitle = this.setLessonTitle.bind(this);
+        this.createLesson = this.createLesson.bind(this);
+        this.deleteLesson = this.deleteLesson.bind(this);
         this.lessonService = LessonService.instance;
 
     }
@@ -34,6 +36,14 @@ export default class LessonTabs extends Component{
 
     }
 
+    deleteLesson(lessonId) {
+        this.lessonService
+            .deleteLesson(lessonId)
+            .then(() => {
+                this.findAllLessonsForModule(this.state.courseId,this.state.moduleId);
+            });
+
+    }
     setLessonTitle(event) {
         this.setState({lesson: {
                 title: event.target.value
@@ -41,6 +51,13 @@ export default class LessonTabs extends Component{
 
     setLessons(lessons) {
         this.setState({lessons: lessons});
+    }
+
+    createLesson(){
+        this.lessonService
+            .createLesson(this.state.courseId,this.state.moduleId,this.state.lesson).then(() => {
+            this.findAllLessonsForModule(this.state.courseId,this.state.moduleId);
+        });
     }
 
     findAllLessonsForModule(courseId,moduleId) {
@@ -52,7 +69,10 @@ export default class LessonTabs extends Component{
 
     renderLessons() {
         let lessons = this.state.lessons.map((lesson) => {
-            return <LessonListItem lesson={lesson} key={lesson.id} courseId={this.state.courseId} moduleId={this.state.moduleId}/>
+            return <LessonListItem lesson={lesson} key={lesson.id}
+                                   courseId={this.state.courseId}
+                                   moduleId={this.state.moduleId}
+                                   delete={this.deleteLesson}/>
         });
         return lessons;
     }
@@ -60,8 +80,8 @@ export default class LessonTabs extends Component{
     render(){ return(
         <div className="row">
             <div className="col-4" >
-                <span><input onChange={this.setLessonTitle} style={{"paddingTop":"10px"}} className="form-control"  placeholder="New Lesson"/></span>
-                <span><button className="btn btn-dark btn-block"><i className="fa fa-plus fa-2x" >
+                <span><input onChange={this.setLessonTitle} value={this.state.lesson.title} style={{"paddingTop":"10px"}} className="form-control"  placeholder="New Lesson"/></span>
+                <span><button className="btn btn-dark btn-block" onClick={this.createLesson}><i className="fa fa-plus fa-2x" >
                     </i></button></span>
                 <div style={{"paddingBottom":"100%"}}>
                     <ul className="list-group">

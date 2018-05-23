@@ -4,6 +4,8 @@ const MODULE_API_URL =
 const MODULE_API_URL_DEL =
     'http://localhost:8080/api/module/MID';
 
+const MODULE_API_URL1 = 'http://localhost:8080/api/module';
+
 let _singleton = Symbol();
 export default class ModuleService {
     constructor(singletonToken) {
@@ -25,6 +27,14 @@ export default class ModuleService {
         ('MID', moduleId), {
             method: 'delete'
         })
+    }
+
+    findAllModules(){
+        return fetch(MODULE_API_URL1)
+            .then(function(response){
+                return response.json();
+            });
+
     }
 
 
