@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import '../css/ModuleEditorStyleClient.css';
 
 export default class ModuleListItem
     extends React.Component {
@@ -8,7 +9,7 @@ export default class ModuleListItem
     }
     render() {
         return (
-            <li className="list-group-item" style={{"marginBottom":"10px"}}>
+            <li className="list-group-item" style={{"marginBottom":"10px","backgroundColor":"#4b5154"}}>
                 <Link  to={`/course/${this.props.courseId}/module/${this.props.module.id}`}>
                     {this.props.module.title}
                 </Link>
