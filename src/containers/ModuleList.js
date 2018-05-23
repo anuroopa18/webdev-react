@@ -12,10 +12,13 @@ export default class ModuleList extends React.Component {
         super(props);
         this.state = {courseId:'',
             module:{title:''},
-            modules: []
+            modules: [],
+            course:[]
         };
         this.setCourseId =
             this.setCourseId.bind(this);
+        this.setCourse =
+            this.setCourse.bind(this);
         this.setModuleTitle =
             this.setModuleTitle.bind(this);
         this.createModule =
@@ -54,6 +57,7 @@ export default class ModuleList extends React.Component {
     componentWillReceiveProps(newProps){
         this.findAllModulesForCourse(newProps.courseId);
         this.setCourseId(newProps.courseId);
+        this.setCourse(newProps.course);
     }
     findAllModulesForCourse(courseId) {
         this.moduleService
@@ -62,6 +66,10 @@ export default class ModuleList extends React.Component {
     }
     setModules(modules) {
         this.setState({modules: modules})
+    }
+
+    setCourse(course){
+        this.setState({course: course})
     }
 
     renderModules() {
@@ -87,19 +95,34 @@ export default class ModuleList extends React.Component {
             <Router>
             <div className="row">
                 <div className="col-4" >
-            <span><input style={{"paddingTop":"10px"}} className="form-control"
+                    <div style={{
+                        "backgroundColor": "#343a40","paddingBottom":"20px","paddingTop":"20px","marginBottom":"3px"}}><span style={{"color":"grey","paddingRight":"15px","paddingLeft":"15px"}}><i className="fa fa-2x fa-times"></i></span>
+                        <span>&nbsp;</span>
+                        <span style={{"color": "white", "fontSize": "27px"}}>{this.state.course.title}</span>
+                    </div>
+            <span><input style={{"paddingTop":"15px","marginBottom":"5px","paddingBottom":"15px"}} className="form-control"
              onChange={this.setModuleTitle} value={this.state.module.title} placeholder="New Module"/></span>
                 <span><button className="btn btn-dark btn-block" onClick={this.createModule}><i className="fa fa-plus fa-2x" >
                     </i></button></span>
-                <div style={{"paddingBottom":"100%"}}>
-                <ul className="list-group">
+                <div style={{"paddingBottom":"100%","backgroundColor":"#343a40"}}>
+                <ul className="list-group" style={{"marginTop":"6px"}}>
                 {this.renderModules()}
                 </ul>
                 </div>
                 </div>
                 <div className="col-8">
-                    <Route path="/course/:courseId/module/:moduleId"
-                           component={ModuleEditor}/>
+                    <nav className="navbar navbar-expand-lg navbar-light bg-dark" style={{"marginRight":"-20px","marginLeft":"-31px","paddingTop":"20px","paddingBottom":"20px","height":"80px"}}>
+
+                        <ul className="nav nav-pills nav-fill">
+
+                            <Route path="/course/:courseId/module/:moduleId"
+                                   component={ModuleEditor}/>
+
+                        </ul>
+
+                    </nav>
+
+
                 </div>
             </div>
             </Router>

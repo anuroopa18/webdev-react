@@ -8,8 +8,8 @@ export default class ModuleListItem
     }
     render() {
         return (
-            <li className="list-group-item">
-                <Link to={`/course/${this.props.courseId}/module/${this.props.module.id}`}>
+            <li className="list-group-item" style={{"marginBottom":"10px"}}>
+                <Link  to={`/course/${this.props.courseId}/module/${this.props.module.id}`}>
                     {this.props.module.title}
                 </Link>
 

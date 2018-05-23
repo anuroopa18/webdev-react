@@ -1,3 +1,19 @@
 .col-4{
 padding-bottom: 100%!important;
 }
+
+.nav-pills .nav-link.active
+{
+    background-color: #26282b !important;
+
+}
+
+.nav-link
+{
+    color: #ffffff !important;
+}
+
+.fa-plus:before {
+    content: "\f067";
+    color: white;
+}

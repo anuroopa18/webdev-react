@@ -78,21 +78,15 @@ export default class LessonTabs extends Component{
     }
 
     render(){ return(
-        <div className="row">
-            <div className="col-4" >
-                <span><input onChange={this.setLessonTitle} value={this.state.lesson.title} style={{"paddingTop":"10px"}} className="form-control"  placeholder="New Lesson"/></span>
-                <span><button className="btn btn-dark btn-block" onClick={this.createLesson}><i className="fa fa-plus fa-2x" >
-                    </i></button></span>
-                <div style={{"paddingBottom":"100%"}}>
-                    <ul className="list-group">
+
+            <ul className="navbar-nav" style={{"height":"50px"}}>
+                <input onChange={this.setLessonTitle} value={this.state.lesson.title} style={{"paddingTop":"10px","width":"50%"}} className="form-control"  placeholder="New Lesson"/>
+                <button className="btn btn-dark" onClick={this.createLesson}><i className="fa fa-plus fa-2x" >
+                    </i></button>
                         {this.renderLessons()}
-                    </ul>
-                </div>
-            </div>
-            <div className="col-8">
-               <h2> Test </h2>
-            </div>
-        </div>
+            </ul>
+
+
     )
 
     }

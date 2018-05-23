@@ -30,18 +30,7 @@ export default class CourseEditor
         return (
 
                 <div style={{"paddingBottom": "100%"}} >
-                    <div style={{
-                        "backgroundColor": "black"}}><span style={{"color":"grey","paddingRight":"15px","paddingLeft":"15px"}}><i className="fa fa-3x fa-times"></i></span>
-                        <span>&nbsp;</span>
-                        <span style={{
-                            "color": "white",
-                            "fontSize": "39px",
-                            "paddingTop": "10px",
-                            "paddingBottom": "10px"
-                        }}>{this.state.course.title}</span>
-                    </div>
-                    <ModuleList courseId={this.state.course.id}/>
-
+                    <ModuleList courseId={this.state.course.id} course={this.state.course}/>
                 </div>
 
 
