@@ -29,7 +29,7 @@ export default class ModuleService {
 
 
     createModule(courseId, module) {
-        return fetch(MODULE_API_URL.replace('CID', courseId),
+        return fetch(MODULE_API_URL_DEL.replace('CID', courseId),
             {
                 body: JSON.stringify(module),
                 headers: { 'Content-Type': 'application/json' },
@@ -37,6 +37,18 @@ export default class ModuleService {
             }).then(function (response)
         { return response.json(); })
     }
+
+
+    findModuleById(moduleId){
+        return fetch(
+            MODULE_API_URL_DEL
+                .replace('MID', moduleId))
+            .then(function (response) {
+                return response.json();
+            })
+
+    }
+
 
     static get instance() {
         if(!this[_singleton])
