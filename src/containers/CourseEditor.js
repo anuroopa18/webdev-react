@@ -1,6 +1,4 @@
 import React from 'react';
-import '../css/CourseEditorStyleClient.css';
-import '../css/CourseEditorStyleClient.css';
 import ModuleList from './ModuleList.js';
 import CourseService from '../services/CourseService'
 
@@ -31,7 +29,17 @@ export default class CourseEditor
     render() {
         return (
 
-                <div style={{"paddingBottom": "100%"}} className="col-4">
+                <div style={{"paddingBottom": "100%"}} >
+                    <div style={{
+                        "backgroundColor": "black"}}><span style={{"color":"grey","paddingRight":"15px","paddingLeft":"15px"}}><i className="fa fa-3x fa-times"></i></span>
+                        <span>&nbsp;</span>
+                        <span style={{
+                            "color": "white",
+                            "fontSize": "39px",
+                            "paddingTop": "10px",
+                            "paddingBottom": "10px"
+                        }}>{this.state.course.title}</span>
+                    </div>
                     <ModuleList courseId={this.state.course.id}/>
 
                 </div>

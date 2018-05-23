@@ -19,7 +19,7 @@ export default class CourseRow extends Component{
             <td>{this.props.course.modified}</td>
             <td>
                 <span><i onClick={() =>
-                {this.props.delete(this.props.course.id)}} className="delete fa-2x fa fa-times"></i></span>
+                { if (window.confirm('Are you sure you wish to delete this item?')) this.props.delete(this.props.course.id)}} className="delete fa-2x fa fa-times"></i></span>
             </td>
 
         </tr>

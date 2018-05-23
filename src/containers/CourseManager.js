@@ -3,7 +3,7 @@ import {BrowserRouter as Router,Route} from 'react-router-dom';
 import CourseList from './CourseList';
 import CourseEditor from './CourseEditor';
 import '../css/CourseListStyleClient.css';
-import '../css/CourseEditorStyleClient.css';
+
 
 
 export default class CourseManager extends Component {

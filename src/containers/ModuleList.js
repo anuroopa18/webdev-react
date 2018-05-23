@@ -1,6 +1,11 @@
 import React from 'react';
 import ModuleService from '../services/ModuleService';
 import ModuleListItem from '../components/ModuleListItem';
+import ModuleEditor from './ModuleEditor';
+import  '../css/ModuleEditorStyleClient.css';
+import {BrowserRouter as Router,Route} from 'react-router-dom';
+
+
 
 export default class ModuleList extends React.Component {
     constructor(props) {
@@ -16,6 +21,17 @@ export default class ModuleList extends React.Component {
         this.createModule =
             this.createModule.bind(this);
         this.moduleService = ModuleService.instance;
+        this.deleteModule = this.deleteModule.bind(this);
+
+    }
+
+    deleteModule(moduleId) {
+        this.moduleService
+            .deleteModule(moduleId)
+            .then(() => {
+                this.findAllModulesForCourse
+                (this.state.courseId)
+            });
 
     }
 
@@ -50,7 +66,7 @@ export default class ModuleList extends React.Component {
 
     renderModules() {
         let modules = this.state.modules.map((module) => {
-            return <ModuleListItem module={module} key={module.id}/>
+            return <ModuleListItem module={module} key={module.id} courseId={this.state.courseId} delete={this.deleteModule}/>
         });
         return modules;
     }
@@ -67,15 +83,25 @@ export default class ModuleList extends React.Component {
 
     render() {
         return (
-            <div>
-            <h4>Modules courseId:
-                {this.state.courseId}</h4>
-            <input onChange={this.setModuleTitle} value={this.state.module.title} placeholder="New Module"/>
-                <button onClick={this.createModule}>
-                    Create</button>
+
+            <Router>
+            <div className="row">
+                <div className="col-4" >
+            <span><input style={{"paddingTop":"10px"}} className="form-control"
+             onChange={this.setModuleTitle} value={this.state.module.title} placeholder="New Module"/></span>
+                <span><button className="btn btn-dark btn-block" onClick={this.createModule}><i className="fa fa-plus fa-2x" >
+                    </i></button></span>
+                <div style={{"paddingBottom":"100%"}}>
                 <ul className="list-group">
                 {this.renderModules()}
                 </ul>
+                </div>
+                </div>
+                <div className="col-8">
+                    <Route path="/course/:courseId/module/:moduleId"
+                           component={ModuleEditor}/>
+                </div>
             </div>
+            </Router>
 
     )}}
