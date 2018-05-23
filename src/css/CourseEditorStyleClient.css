@@ -1,0 +1,28 @@
+.nav-pills .nav-link.active
+{
+    background-color: #26282b !important;
+
+}
+
+.nav-link
+{
+    color: #ffffff !important;
+    padding-right: 60px!important;
+    padding-left: 60px!important;
+    padding-top: 15px!important;
+    padding-bottom: 15px!important;
+    font-size: larger!important;
+}
+
+.fa-plus:before {
+    content: "\f067";
+    color: white;
+}
+
+.plus{
+    padding-right: 50px!important;
+    padding-left: 50px!important;
+    padding-top: 20px!important;
+    padding-bottom: 20px!important;
+}
+
