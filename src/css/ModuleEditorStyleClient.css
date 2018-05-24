@@ -19,6 +19,15 @@ padding-bottom: 100%!important;
 }
 
 a{
+   color:black!important;
+}
+
+
+.aref{
     font-size: large;
     color: white!important;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    padding-left: 15px;
 }

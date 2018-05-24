@@ -2,7 +2,6 @@ import React from 'react';
 import ModuleService from '../services/ModuleService';
 import ModuleListItem from '../components/ModuleListItem';
 import ModuleEditor from './ModuleEditor';
-import  '../css/ModuleEditorStyleClient.css';
 import {BrowserRouter as Router,Route} from 'react-router-dom';
 
 
@@ -96,7 +95,7 @@ export default class ModuleList extends React.Component {
             <div className="row">
                 <div className="col-4" >
                     <div style={{
-                        "backgroundColor": "#343a40","paddingBottom":"20px","paddingTop":"20px","marginBottom":"3px"}}><span style={{"color":"grey","paddingRight":"15px","paddingLeft":"15px"}}><i className="fa fa-2x fa-times"></i></span>
+                        "backgroundColor": "#343a40","paddingBottom":"20px","paddingTop":"20px","marginBottom":"3px","marginRight":"-31px"}}><span style={{"color":"grey","paddingRight":"15px","paddingLeft":"15px"}}><i className="fa fa-2x fa-times"></i></span>
                         <span>&nbsp;</span>
                         <span style={{"color": "white", "fontSize": "27px"}}>{this.state.course.title}</span>
                     </div>
@@ -110,7 +109,8 @@ export default class ModuleList extends React.Component {
                 </ul>
                 </div>
                 </div>
-                <div className="col-8">
+                <div className="col-8" style={{"overflow-x":"auto"}}>
+                    <div style={{"backgroundColor": "rgb(52, 58, 64)","overflowX": "auto"}}>
                     <nav className="navbar navbar-expand-lg navbar-light bg-dark" style={{"marginRight":"-20px","marginLeft":"-31px","paddingTop":"20px","paddingBottom":"20px","height":"80px"}}>
 
                         <ul className="nav nav-pills nav-fill">
@@ -121,7 +121,7 @@ export default class ModuleList extends React.Component {
                         </ul>
 
                     </nav>
-
+                    </div>
 
                 </div>
             </div>

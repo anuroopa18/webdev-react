@@ -3,6 +3,7 @@ import ModuleEditor from "./ModuleEditor";
 import LessonListItem from "../components/LessonListItem"
 import LessonService from "../services/LessonService"
 
+
 export default class LessonTabs extends Component{
     constructor(props){
         super(props);

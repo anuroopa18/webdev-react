@@ -68,7 +68,7 @@ export default class CourseList extends Component {
         return (
             <div>
                 <nav className="navbar navbar-expand-lg navbar-dark bg-primary justify-content-between">
-                    <a className="navbar-brand" href="#">Course Manager</a>
+                    <span className="navbar-brand" style={{"fontSize":"25px"}}><i className="fa fa-bars" style={{"paddingRight":"10px"}}></i> Course Manager</span>
                     <label htmlFor="newCourse"></label>
                     <input onChange={this.titleChanged}
                            style={{"backgroundColor": "#4d94ff", "border": "1px solid #4d94ff", "color": "white"}}
