@@ -1,6 +1,6 @@
 let _singleton = Symbol();
 
-const COURSE_API_URL = 'http://localhost:8080/api/course';
+const COURSE_API_URL = 'http://webdev-smr1-react.herokuapp.com/api/course';
 
 
 export default class CourseService {
