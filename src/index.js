@@ -10,7 +10,7 @@ import CourseEditor from './containers/CourseEditor.js';
 
 ReactDOM.render(
     //<CourseManager/>,
-    <div className="container-fluid">
+    <div>
      {/*<ModuleList/>
      <Stateless message="hello anuroopa!!!"/>*/}
      <CourseManager/>

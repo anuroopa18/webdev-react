@@ -9,7 +9,7 @@ import '../css/CourseListStyleClient.css';
 export default class CourseManager extends Component {
     render() { return (
            <Router>
-            <div className="container-fluid" style={{"backgroundColor":"#e6e6e6"}}>
+            <div style={{"backgroundColor":"#e6e6e6"}}>
                 <Route path="/courses" component={CourseList}></Route>
                 <Route path="/course/:courseId"
                        component={CourseEditor}>

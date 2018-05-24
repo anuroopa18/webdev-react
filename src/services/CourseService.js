@@ -1,6 +1,6 @@
 let _singleton = Symbol();
 
-const COURSE_API_URL = 'https://webdev-smr1-react.herokuapp.com/api/course';
+const COURSE_API_URL = 'https://webdev-smr1.herokuapp.com/api/course';
 
 
 export default class CourseService {
@@ -16,7 +16,6 @@ export default class CourseService {
     findAllCourses() {
         return fetch(COURSE_API_URL)
             .then(function(response){
-
                 return response.json();
             });
     }

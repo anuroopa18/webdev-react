@@ -88,7 +88,7 @@ export default class CourseList extends Component {
               </span>
 
                 </nav>
-                <div className="container-fluid col-md-10" style={{
+                <div className="container-fluid" style={{
                     "backgroundColor": "#ffffff",
                     "border": "1px solid #e6e6e6",
                     "paddingBottom": "100%",
