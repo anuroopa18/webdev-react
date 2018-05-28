@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import ModuleEditor from "./ModuleEditor";
 import LessonListItem from "../components/LessonListItem"
 import LessonService from "../services/LessonService"
+import {BrowserRouter as Router,Route} from 'react-router-dom';
+import LessonEditor from "./LessonEditor"
 
 
 export default class LessonTabs extends Component{
@@ -79,14 +81,39 @@ export default class LessonTabs extends Component{
     }
 
     render(){ return(
+        <Router>
+        <div>
+         <div>
+
+             <div style={{"backgroundColor": "rgb(52, 58, 64)","overflowX": "auto"}}>
+                 <nav className="navbar navbar-expand-lg navbar-light bg-dark" style={{"marginRight":"-20px","marginLeft":"-31px","paddingTop":"20px","paddingBottom":"20px","height":"80px"}}>
+
+                     <ul className="nav nav-pills nav-fill">
 
             <ul className="navbar-nav" style={{"height":"50px"}}>
-                <input onChange={this.setLessonTitle} value={this.state.lesson.title} style={{"paddingTop":"10px","width":"50%"}} className="form-control"  placeholder="New Lesson"/>
+                <input onChange={this.setLessonTitle} value={this.state.lesson.title} style={{"paddingTop":"10px","width":"50%","marginLeft":"20px"}} className="form-control"  placeholder="New Lesson"/>
                 <button className="btn btn-dark" onClick={this.createLesson}><i className="fa fa-plus fa-2x" >
                     </i></button>
                         {this.renderLessons()}
             </ul>
+                     </ul>
 
+                 </nav>
+             </div>
+         </div>
+
+        <div>
+              <div className="col-8">
+                  <div >
+
+                      <Route path="/course/:courseId/module/:moduleId/lesson/:lessonId"
+                             component={LessonEditor}/>
+                  </div>
+
+              </div>
+        </div>
+        </div>
+        </Router>
 
     )
 

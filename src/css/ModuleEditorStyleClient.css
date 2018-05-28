@@ -1,5 +1,9 @@
 .col-4{
-padding-bottom: 100%!important;
+padding-right: unset!important;
+}
+
+.addCss{
+    padding-left: unset!important;
 }
 
 .nav-pills .nav-link.active

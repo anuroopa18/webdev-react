@@ -98,7 +98,7 @@ export default class CourseList extends Component {
                         < thead>
                         < tr>
                             < th></th>
-                            <th className="th-lg">Title</th>
+                            <th classNa me="th-lg">Title</th>
                             <th className="th-lg">Owned By</th>
                             <th className="th-lg">Last Modified By</th>
                             <th className="th-lg">&nbsp;</th>

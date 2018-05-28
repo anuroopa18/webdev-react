@@ -95,33 +95,27 @@ export default class ModuleList extends React.Component {
             <div className="row">
                 <div className="col-4" >
                     <div style={{
-                        "backgroundColor": "#343a40","paddingBottom":"20px","paddingTop":"20px","marginBottom":"3px","marginRight":"-31px"}}><span style={{"color":"grey","paddingRight":"15px","paddingLeft":"15px"}}><i className="fa fa-2x fa-times"></i></span>
+                        "backgroundColor": "#343a40","paddingBottom":"20px","paddingTop":"20px","marginBottom":"3px","marginRight":"-1px"}}><span style={{"color":"grey","paddingRight":"15px","paddingLeft":"15px"}}><i className="fa fa-2x fa-times"></i></span>
                         <span>&nbsp;</span>
                         <span style={{"color": "white", "fontSize": "27px"}}>{this.state.course.title}</span>
                     </div>
-            <span><input style={{"paddingTop":"15px","marginBottom":"5px","paddingBottom":"15px"}} className="form-control"
-             onChange={this.setModuleTitle} value={this.state.module.title} placeholder="New Module"/></span>
-                <span><button className="btn btn-dark btn-block" onClick={this.createModule}><i className="fa fa-plus fa-2x" >
-                    </i></button></span>
+            <input style={{"paddingTop":"15px","marginBottom":"5px","paddingBottom":"15px"}} className="form-control"
+             onChange={this.setModuleTitle} value={this.state.module.title} placeholder="New Module"/>
+                <button className="btn btn-dark btn-block" onClick={this.createModule}><i className="fa fa-plus fa-2x" >
+                    </i></button>
                 <div style={{"paddingBottom":"100%","backgroundColor":"#343a40"}}>
                 <ul className="list-group" style={{"marginTop":"6px"}}>
                 {this.renderModules()}
                 </ul>
                 </div>
                 </div>
-                <div className="col-8" style={{"overflow-x":"auto"}}>
-                    <div style={{"backgroundColor": "rgb(52, 58, 64)","overflowX": "auto"}}>
-                    <nav className="navbar navbar-expand-lg navbar-light bg-dark" style={{"marginRight":"-20px","marginLeft":"-31px","paddingTop":"20px","paddingBottom":"20px","height":"80px"}}>
+                <div className="col-8 addCss" style={{"overflowX":"auto"}}>
 
-                        <ul className="nav nav-pills nav-fill">
 
                             <Route path="/course/:courseId/module/:moduleId"
                                    component={ModuleEditor}/>
 
-                        </ul>
 
-                    </nav>
-                    </div>
 
                 </div>
             </div>
