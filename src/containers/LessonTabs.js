@@ -106,7 +106,7 @@ export default class LessonTabs extends Component{
               <div className="col-8">
                   <div >
 
-                      <Route path="/course/:courseId/module/:moduleId/lesson/:lessonId"
+                      <Route path="/course/:courseId/module/:moduleId/lesson/:lessonId" lessonId={this.state.lesson.id}
                              component={LessonEditor}/>
                   </div>
 

@@ -1,10 +1,10 @@
 const LESSON_API_URL =
-    'https://webdev-smr1.herokuapp.com/api/course/CID/module/MID/lesson';
+    'http://localhost:8080/api/course/CID/module/MID/lesson';
 
 const LESSON_API_URL_1 =
-    'https://webdev-smr1.herokuapp.com/api/lesson/LID';
+    'http://localhost:8080/api/lesson/LID';
 
-const LESSON_API_URL_2 ='https://webdev-smr1.herokuapp.com/api/lesson';
+const LESSON_API_URL_2 ='http://localhost:8080/api/lesson';
 
 let _singleton = Symbol();
 export default class ModuleService {
