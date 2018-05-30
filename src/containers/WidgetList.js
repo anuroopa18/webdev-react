@@ -26,7 +26,7 @@ class WidgetList extends Component  {
                 <div className="container" style={{"paddingBottom": "18px", "width": "150%", "marginTop": "14px"}}>
                     <div style={{"display": "inline-flex", "float": "right"}}>
                         <button hidden={this.props.previewMode} style={{"marginRight": "6px", "marginTop": "0px", "marginBottom": "11px"}}
-                                className="btn btn-success" onClick={e => {this.props.save(lsnId)}} >Save
+                                className="btn btn-success" onClick={e => {if(this.props.save(lsnId)) window.alert("Details saved")}} >Save
                         </button>
                         <label style={{"fontWeight": "bold", "paddingTop": "6px"}}>Preview</label>
                         <label className="switch"><input onClick={this.props.preview} type="checkbox"
