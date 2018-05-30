@@ -2,67 +2,8 @@ import React from 'react'
 import {DELETE_WIDGET} from "../constants/index";
 import {connect} from "react-redux";
 import * as actions from '../actions/index'
-
-
-const Heading = ({widget,headingSizeChanged,headingTextChanged,widgetNameChanged}) => {
-    let selectElem
-    let inputElem
-    let inputWidgetNameElem
-    return(
-
-    <div>
-        <input onChange={() => headingTextChanged(widget.id, inputElem.value)}
-               ref={node => inputElem = node}
-               value={widget.text} type="text" className="form-control form-control" id="headingText" placeholder="Widget text"></input>
-        <p></p>
-        <select className="form-control" onChange={() => headingSizeChanged(widget.id, selectElem.value)}
-                value={widget.size}
-                ref={node => selectElem = node}>
-            <option value="1">Heading 1</option>
-            <option value="2">Heading 2</option>
-            <option value="3">Heading 3</option>
-        </select>
-        <p></p>
-        <input type="text" onChange={() => widgetNameChanged(widget.id, inputWidgetNameElem.value)}
-                           ref={node => inputWidgetNameElem = node}
-                           value={widget.name} className="form-control form-control" id="widgetName" placeholder="Widget Name" />
-        <p></p>
-        <h4> Preview </h4>
-        {widget.size == 1 && <h1>{widget.text}</h1>}
-        {widget.size == 2 && <h2>{widget.text}</h2>}
-        {widget.size == 3 && <h3>{widget.text}</h3>}
-        <p></p>
-    </div>
-    )
-}
-
-const dispatchToPropsMapper = dispatch => ({
-    headingTextChanged: (widgetId,newText) =>
-        actions.headingTextChanged(dispatch,widgetId,newText),
-    headingSizeChanged: (widgetId, newSize) =>
-        actions.headingSizeChanged(dispatch, widgetId, newSize),
-    widgetNameChanged: (widgetId,newWidgetName) =>
-        actions.widgetNameChanged(dispatch,widgetId,newWidgetName)
-
-})
-
-
-const HeadingContainer = connect(null,dispatchToPropsMapper) (Heading)
-
-const Paragraph = (widget) => (
-  <div>
-      <p></p>
-      <textarea type="text" className="form-control form-control" id="paragraphText" placeholder="Paragraph"></textarea>
-      <p></p>
-
-      <input type="text" className="form-control form-control" id="widgetName" placeholder="Widget Name"/>
-      <p></p>
-      <h4> Preview </h4>
-      <label> <h1>Paragraph</h1> </label>
-      <p></p>
-
-  </div>
-)
+import HeadingContainer from './Heading'
+import ParagraphContainer from './Paragraph'
 
 const List = (widget) => (
 <div>
@@ -149,7 +90,7 @@ const Widget = ({widget, dispatch}) => {
                 )}><i className="fa fa-times"></i></button>
             </div>
             {widget.widgetType==='Heading' && <HeadingContainer widget={widget}/>}
-            {widget.widgetType === 'Paragraph' && <Paragraph/>}
+            {widget.widgetType === 'Paragraph' && <ParagraphContainer widget={widget}/>}
             {widget.widgetType === 'Link' && <Link/>}
             {widget.widgetType === 'List' && <List/>}
             {widget.widgetType === 'Image' && <Image/>}

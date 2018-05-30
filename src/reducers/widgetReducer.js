@@ -1,7 +1,16 @@
-import {ADD_WIDGET, DELETE_WIDGET, FIND_ALL_WIDGETS, SAVE,FIND_WIDGETS_FOR_LESSON,HEADING_SIZE_CHANGED} from "../constants/index";
+import {ADD_WIDGET, DELETE_WIDGET, FIND_ALL_WIDGETS, SAVE,FIND_WIDGETS_FOR_LESSON,HEADING_SIZE_CHANGED,PARAGRAPH_TEXT_CHANGED} from "../constants/index";
 
 export const widgetReducer = (state={widgets:[]},action) => {
     switch(action.type){
+        case 'PARAGRAPH_TEXT_CHANGED':
+            return {
+                widgets: state.widgets.map(widget => {
+                    if(widget.id === action.id) {
+                        widget.text = action.text
+                    }
+                    return Object.assign({}, widget)
+                })
+            }
         case 'WIDGET_NAME_CHANGED':
             return {
                 widgets: state.widgets.map(widget => {
@@ -72,7 +81,7 @@ export const widgetReducer = (state={widgets:[]},action) => {
                 widgets: [
                     ...state.widgets,
                     {id:state.widgets.length + 1
-                        , text:'New widget',
+                        ,
                           widgetType: 'Paragraph',
                     size: 1}
                 ],
