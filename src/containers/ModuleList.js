@@ -103,7 +103,7 @@ export default class ModuleList extends React.Component {
              onChange={this.setModuleTitle} value={this.state.module.title} placeholder="New Module"/>
                 <button className="btn btn-dark btn-block" onClick={this.createModule}><i className="fa fa-plus fa-2x" >
                     </i></button>
-                <div style={{"paddingBottom":"100%","backgroundColor":"#343a40"}}>
+                <div style={{"height":"100%","backgroundColor":"#343a40"}}>
                 <ul className="list-group" style={{"marginTop":"6px"}}>
                 {this.renderModules()}
                 </ul>

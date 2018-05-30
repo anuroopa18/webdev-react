@@ -1,65 +1,11 @@
 import React from 'react'
 import {DELETE_WIDGET} from "../constants/index";
 import {connect} from "react-redux";
-import * as actions from '../actions/index'
 import HeadingContainer from './Heading'
 import ParagraphContainer from './Paragraph'
-
-const List = (widget) => (
-<div>
-    <p></p>
-    <textarea type="text" className="form-control form-control" id="headingText" placeholder="Put each item in a separate row"></textarea>
-    <p></p>
-
-    <select className="form-control" id="listType">
-        <option>Ordered</option>
-        <option>Unordered</option>
-    </select>
-    <p></p>
-
-    <input type="text" className="form-control form-control" id="widgetName" placeholder="Widget Name"/>
-    <p></p>
-    <h4> Preview </h4>
-    <ul style={{"listStyleType":"circle"}}>
-        <li> Put each</li>
-        <li> item in </li>
-        <li> separate row </li>
-    </ul>
-    <p></p>
-</div>
-)
-
-const Link = (widget) => (
-        <div>
-        <p></p>
-        <input type="text" className="form-control form-control" id="link" placeholder="Link"></input>
-    <p></p>
-
-    <input type="text" className="form-control form-control" id="linkText" placeholder="Link text"></input>
-    <p></p>
-
-    <input type="text" className="form-control form-control" id="widgetName" placeholder="Widget Name"/>
-        <p></p>
-    <h4> Preview </h4>
-    <p></p>
-        </div>
-)
-
-const Image = (widget) =>(
-    <div>
-        <p></p>
-        <input type="text" className="form-control form-control" id="headingText" placeholder="Image URL"></input>
-        <p></p>
-
-        <input type="text" className="form-control form-control" id="widgetName" placeholder="Widget Name"/>
-        <p></p>
-        <h4> Preview </h4>
-        <p></p>
-    </div>
-
-)
-
-
+import ImageContainer from './Image'
+import LinkContainer from './Link'
+import ListContainer from './List'
 
 const Widget = ({widget, dispatch}) => {
     let selectElement
@@ -91,9 +37,9 @@ const Widget = ({widget, dispatch}) => {
             </div>
             {widget.widgetType==='Heading' && <HeadingContainer widget={widget}/>}
             {widget.widgetType === 'Paragraph' && <ParagraphContainer widget={widget}/>}
-            {widget.widgetType === 'Link' && <Link/>}
-            {widget.widgetType === 'List' && <List/>}
-            {widget.widgetType === 'Image' && <Image/>}
+            {widget.widgetType === 'Link' && <LinkContainer widget={widget}/>}
+            {widget.widgetType === 'List' && <ListContainer widget={widget}/>}
+            {widget.widgetType === 'Image' && <ImageContainer widget={widget}/>}
         </div>
     </form>)
 

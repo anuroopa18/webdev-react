@@ -22,7 +22,7 @@ const Paragraph = ({widget,widgetNameChanged,paragraphTextChanged}) => {
                value={widget.name} type="text" className="form-control form-control" id="widgetName" placeholder="Widget Name"/>
         <p></p>
         <h4> Preview </h4>
-        <label><h1>Paragraph</h1></label>
+        <p>{widget.text}</p>
         <p></p>
 
     </div>)

@@ -1,7 +1,57 @@
-import {ADD_WIDGET, DELETE_WIDGET, FIND_ALL_WIDGETS, SAVE,FIND_WIDGETS_FOR_LESSON,HEADING_SIZE_CHANGED,PARAGRAPH_TEXT_CHANGED} from "../constants/index";
+import {ADD_WIDGET, DELETE_WIDGET, FIND_ALL_WIDGETS, SAVE,FIND_WIDGETS_FOR_LESSON,HEADING_SIZE_CHANGED,PARAGRAPH_TEXT_CHANGED,LINK_CHANGED,LINK_NAME_CHANGED,LINK_TEXT_CHANGED,WIDGET_NAME_CHANGED,HEADING_TEXT_CHANGED,SELECT_WIDGET_TYPE,LIST_TYPE_CHANGED,LIST_TEXT_CHANGED} from "../constants/index";
 
 export const widgetReducer = (state={widgets:[]},action) => {
     switch(action.type){
+        case 'LIST_TEXT_CHANGED':
+            return {
+                widgets: state.widgets.map(widget => {
+                    if(widget.id === action.id) {
+                        widget.listItems = action.listItems
+                    }
+                    return Object.assign({}, widget)
+                })
+            }
+
+        case 'LIST_TYPE_CHANGED':
+            return {
+                widgets: state.widgets.map(widget => {
+                    if(widget.id === action.id) {
+                        widget.listType = action.listType
+                    }
+                    return Object.assign({}, widget)
+                })
+            }
+
+        case 'LINK_TEXT_CHANGED':
+            return {
+                widgets: state.widgets.map(widget => {
+                    if(widget.id === action.id) {
+                        widget.text = action.text
+                    }
+                    return Object.assign({}, widget)
+                })
+            }
+
+        case 'LINK_NAME_CHANGED':
+            return {
+                widgets: state.widgets.map(widget => {
+                    if(widget.id === action.id) {
+                        widget.href = action.href
+                    }
+                    return Object.assign({}, widget)
+                })
+            }
+
+        case 'LINK_CHANGED':
+            return {
+                widgets: state.widgets.map(widget => {
+                    if(widget.id === action.id) {
+                        widget.src = action.src
+                    }
+                    return Object.assign({}, widget)
+                })
+            }
+
         case 'PARAGRAPH_TEXT_CHANGED':
             return {
                 widgets: state.widgets.map(widget => {
@@ -83,6 +133,8 @@ export const widgetReducer = (state={widgets:[]},action) => {
                     {id:state.widgets.length + 1
                         ,
                           widgetType: 'Paragraph',
+                        listType:'unordered',
+                        listItems:'Put each element in a separate row',
                     size: 1}
                 ],
 
