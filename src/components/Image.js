@@ -2,11 +2,12 @@ import React from 'react'
 import {connect} from "react-redux";
 import * as actions from '../actions/index'
 
-const Image = ({widget,widgetNameChanged,imageLinkChanged}) => {
+const Image = ({widget,widgetNameChanged,imageLinkChanged,preview}) => {
     let someInputElem
     let linkInputElem
     return (
         <div>
+            <div hidden={preview}>
             <p></p>
             <input type="text" onChange={() => imageLinkChanged(widget.id, linkInputElem.value)}
                    ref={node => linkInputElem = node}
@@ -20,6 +21,7 @@ const Image = ({widget,widgetNameChanged,imageLinkChanged}) => {
                    value={widget.name} id="widgetName" placeholder="Widget Name"/>
             <p></p>
             <h4> Preview </h4>
+            </div>
             <img src={widget.src}/>
         </div>
     )}
@@ -31,5 +33,12 @@ const dispatchToPropsMapper = dispatch => ({
         actions.imageLinkChanged(dispatch,widgetId,newImageLink)
 })
 
-const ImageContainer = connect(null,dispatchToPropsMapper) (Image)
+const stateToPropertiesMapper = state => (
+    {
+        preview:state.preview
+    }
+)
+
+
+const ImageContainer = connect(stateToPropertiesMapper,dispatchToPropsMapper) (Image)
 export default ImageContainer

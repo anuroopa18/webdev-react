@@ -1,8 +1,52 @@
-import {ADD_WIDGET, DELETE_WIDGET, FIND_ALL_WIDGETS, SAVE,FIND_WIDGETS_FOR_LESSON,HEADING_SIZE_CHANGED,PARAGRAPH_TEXT_CHANGED,LINK_CHANGED,LINK_NAME_CHANGED,LINK_TEXT_CHANGED,WIDGET_NAME_CHANGED,HEADING_TEXT_CHANGED,SELECT_WIDGET_TYPE,LIST_TYPE_CHANGED,LIST_TEXT_CHANGED} from "../constants/index";
+import {
+    ADD_WIDGET,
+    DELETE_WIDGET,
+    FIND_ALL_WIDGETS,
+    SAVE,
+    FIND_WIDGETS_FOR_LESSON,
+    HEADING_SIZE_CHANGED,
+    PARAGRAPH_TEXT_CHANGED,
+    LINK_CHANGED,
+    LINK_NAME_CHANGED,
+    LINK_TEXT_CHANGED,
+    WIDGET_NAME_CHANGED,
+    HEADING_TEXT_CHANGED,
+    SELECT_WIDGET_TYPE,
+    LIST_TYPE_CHANGED,
+    LIST_TEXT_CHANGED,
+    PREVIEW,
+    MOVE_UP,
+    MOVE_DOWN
+} from "../constants/index";
 
-export const widgetReducer = (state={widgets:[]},action) => {
+import 'array.prototype.move';
+
+export const widgetReducer = (state={widgets:[],preview:false},action) => {
+    let newState
     switch(action.type){
-        case 'LIST_TEXT_CHANGED':
+        case MOVE_UP:
+           let index= state.widgets.indexOf(action.widget);
+           state.widgets.move(index,index-1)
+            return {
+                widgets:state.widgets.splice(0)
+            }
+
+        case MOVE_DOWN :
+            let indx= state.widgets.indexOf(action.widget);
+            state.widgets.move(indx,indx+1)
+            return {
+                widgets:state.widgets.splice(0)
+            }
+
+        case PREVIEW:
+
+            return {
+                widgets:state.widgets,
+                preview: !state.preview
+
+            }
+
+        case LIST_TEXT_CHANGED:
             return {
                 widgets: state.widgets.map(widget => {
                     if(widget.id === action.id) {
@@ -12,7 +56,7 @@ export const widgetReducer = (state={widgets:[]},action) => {
                 })
             }
 
-        case 'LIST_TYPE_CHANGED':
+        case LIST_TYPE_CHANGED:
             return {
                 widgets: state.widgets.map(widget => {
                     if(widget.id === action.id) {
@@ -22,7 +66,7 @@ export const widgetReducer = (state={widgets:[]},action) => {
                 })
             }
 
-        case 'LINK_TEXT_CHANGED':
+        case LINK_TEXT_CHANGED:
             return {
                 widgets: state.widgets.map(widget => {
                     if(widget.id === action.id) {
@@ -32,7 +76,7 @@ export const widgetReducer = (state={widgets:[]},action) => {
                 })
             }
 
-        case 'LINK_NAME_CHANGED':
+        case LINK_NAME_CHANGED:
             return {
                 widgets: state.widgets.map(widget => {
                     if(widget.id === action.id) {
@@ -42,7 +86,7 @@ export const widgetReducer = (state={widgets:[]},action) => {
                 })
             }
 
-        case 'LINK_CHANGED':
+        case LINK_CHANGED:
             return {
                 widgets: state.widgets.map(widget => {
                     if(widget.id === action.id) {
@@ -52,7 +96,7 @@ export const widgetReducer = (state={widgets:[]},action) => {
                 })
             }
 
-        case 'PARAGRAPH_TEXT_CHANGED':
+        case PARAGRAPH_TEXT_CHANGED:
             return {
                 widgets: state.widgets.map(widget => {
                     if(widget.id === action.id) {
@@ -61,7 +105,7 @@ export const widgetReducer = (state={widgets:[]},action) => {
                     return Object.assign({}, widget)
                 })
             }
-        case 'WIDGET_NAME_CHANGED':
+        case WIDGET_NAME_CHANGED:
             return {
                 widgets: state.widgets.map(widget => {
                     if(widget.id === action.id) {
@@ -71,7 +115,7 @@ export const widgetReducer = (state={widgets:[]},action) => {
                 })
             }
 
-        case 'HEADING_TEXT_CHANGED':
+        case HEADING_TEXT_CHANGED:
             return {
                 widgets: state.widgets.map(widget => {
                     if(widget.id === action.id) {
@@ -80,7 +124,7 @@ export const widgetReducer = (state={widgets:[]},action) => {
                     return Object.assign({}, widget)
                 })
             }
-        case 'HEADING_SIZE_CHANGED':
+        case HEADING_SIZE_CHANGED:
             return {
                 widgets: state.widgets.map(widget => {
                     if(widget.id === action.id) {
@@ -90,12 +134,15 @@ export const widgetReducer = (state={widgets:[]},action) => {
                 })
             }
 
-        case 'FIND_WIDGETS_FOR_LESSON':
+        case FIND_WIDGETS_FOR_LESSON:
+
             return{
                 widgets:action.widgets,
-                lessonId:action.lessonId
+                lessonId:action.lessonId,
+                preview: state.preview
+
             }
-        case 'SELECT_WIDGET_TYPE':
+        case SELECT_WIDGET_TYPE:
             let newState = {
                widgets: state.widgets.filter((widget) => {
                   if(widget.id === action.id) {

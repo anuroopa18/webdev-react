@@ -2,13 +2,15 @@ import React from 'react'
 import {connect} from "react-redux";
 import * as actions from '../actions/index'
 
-const Link = ({widget,widgetNameChanged,linkChanged,textNameChanged}) => {
+const Link = ({widget,widgetNameChanged,linkChanged,textNameChanged,preview}) => {
     let someInputElem
     let linkInputElem
     let textInputElem
     return (
 
     <div>
+
+        <div hidden={preview}>
         <p></p>
         <input type="text"
                onChange={() => linkChanged(widget.id, linkInputElem.value)}
@@ -28,6 +30,7 @@ const Link = ({widget,widgetNameChanged,linkChanged,textNameChanged}) => {
                className="form-control form-control" id="widgetName" placeholder="Widget Name"/>
         <p></p>
         <h4> Preview </h4>
+        </div>
         <a href={widget.href}> {widget.text}</a>
         <p></p>
     </div>
@@ -42,5 +45,10 @@ const dispatchToPropsMapper = dispatch => ({
         actions.textNameChanged(dispatch,widgetId,newText)
 })
 
-const LinkContainer = connect(null,dispatchToPropsMapper) (Link)
+const stateToPropertiesMapper = state => (
+    {
+        preview:state.preview
+    }
+)
+const LinkContainer = connect(stateToPropertiesMapper,dispatchToPropsMapper) (Link)
 export default LinkContainer

@@ -2,13 +2,14 @@ import React from 'react'
 import {connect} from "react-redux";
 import * as actions from '../actions/index'
 
-const Heading = ({widget,headingSizeChanged,headingTextChanged,widgetNameChanged}) => {
+const Heading = ({widget,headingSizeChanged,headingTextChanged,widgetNameChanged,preview}) => {
     let selectElem
     let inputElem
     let inputWidgetNameElem
     return(
 
-        <div>
+       <div>
+        <div hidden={preview}>
             <input onChange={() => headingTextChanged(widget.id, inputElem.value)}
                    ref={node => inputElem = node}
                    value={widget.text} type="text" className="form-control form-control" id="headingText" placeholder="Widget text"></input>
@@ -26,6 +27,7 @@ const Heading = ({widget,headingSizeChanged,headingTextChanged,widgetNameChanged
                    value={widget.name} className="form-control form-control" id="widgetName" placeholder="Widget Name" />
             <p></p>
             <h4> Preview </h4>
+        </div>
             {widget.size == 1 && <h1>{widget.text}</h1>}
             {widget.size == 2 && <h2>{widget.text}</h2>}
             {widget.size == 3 && <h3>{widget.text}</h3>}
@@ -44,6 +46,12 @@ const dispatchToPropsMapper = dispatch => ({
 
 })
 
+const stateToPropertiesMapper = state => (
+    {
+       preview:state.preview
+    }
+)
 
- const HeadingContainer = connect(null,dispatchToPropsMapper) (Heading)
+
+ const HeadingContainer = connect(stateToPropertiesMapper,dispatchToPropsMapper) (Heading)
   export default HeadingContainer

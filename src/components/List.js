@@ -3,12 +3,13 @@ import {connect} from "react-redux";
 import * as actions from '../actions/index'
 
 
-const List = ({widget,widgetNameChanged,listTypeChanged,listTextChanged}) => {
+const List = ({widget,widgetNameChanged,listTypeChanged,listTextChanged,preview}) => {
     let someInputElem
     let selectElem
     let textElem
     return(
         <div>
+            <div hidden={preview}>
             <p></p>
             <textarea onChange={() => listTextChanged(widget.id, textElem.value)}
                       value={widget.listItems}
@@ -28,6 +29,7 @@ const List = ({widget,widgetNameChanged,listTypeChanged,listTextChanged}) => {
                    value={widget.name} className="form-control form-control" id="widgetName" placeholder="Widget Name"/>
             <p></p>
             <h4> Preview </h4>
+            </div>
             <ul style={{"listStyleType":"circle"}}>
             {widget.listType == 'unordered' && widget.listItems.split("\n").map(i => {
                 return<li>{i}</li>
@@ -56,5 +58,12 @@ const dispatchToPropsMapper = dispatch => ({
 
 })
 
-const ListContainer = connect(null,dispatchToPropsMapper) (List)
+const stateToPropertiesMapper = state => (
+    {
+        preview:state.preview
+    }
+)
+
+
+const ListContainer = connect(stateToPropertiesMapper,dispatchToPropsMapper) (List)
 export default ListContainer

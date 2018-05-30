@@ -1,4 +1,4 @@
-import {ADD_WIDGET, FIND_ALL_WIDGETS, SAVE,FIND_WIDGETS_FOR_LESSON,HEADING_SIZE_CHANGED,HEADING_TEXT_CHANGED,WIDGET_NAME_CHANGED,PARAGRAPH_TEXT_CHANGED,LINK_CHANGED,LINK_NAME_CHANGED,LINK_TEXT_CHANGED,LIST_TYPE_CHANGED,LIST_TEXT_CHANGED} from "../constants/index";
+import {ADD_WIDGET, FIND_ALL_WIDGETS, SAVE,FIND_WIDGETS_FOR_LESSON,HEADING_SIZE_CHANGED,HEADING_TEXT_CHANGED,WIDGET_NAME_CHANGED,PARAGRAPH_TEXT_CHANGED,LINK_CHANGED,LINK_NAME_CHANGED,LINK_TEXT_CHANGED,LIST_TYPE_CHANGED,LIST_TEXT_CHANGED,PREVIEW,MOVE_UP} from "../constants/index";
 
 export const findAllWidgets = dispatch => {
     fetch('http://localhost:8080/api/widget')
@@ -15,6 +15,8 @@ export const headingSizeChanged = (dispatch, widgetId, newSize) => (
         id: widgetId,
         size: newSize})
 )
+
+
 
 
 export const listTypeChanged = (dispatch, widgetId, newListType) => (
@@ -90,6 +92,10 @@ export const findWidgetsForLesson = (dispatch,lessonId) => {
 
 export const addWidget = dispatch => (
     dispatch({type:ADD_WIDGET})
+)
+
+export const preview = dispatch => (
+    dispatch({type:PREVIEW})
 )
 
 export const save = (dispatch,lessonId) =>(
