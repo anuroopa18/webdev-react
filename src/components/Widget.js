@@ -1,30 +1,53 @@
 import React from 'react'
 import {DELETE_WIDGET} from "../constants/index";
 import {connect} from "react-redux";
+import * as actions from '../actions/index'
 
 
-const Heading = (widget) => (
+const Heading = ({widget,headingSizeChanged,headingTextChanged,widgetNameChanged}) => {
+    let selectElem
+    let inputElem
+    let inputWidgetNameElem
+    return(
+
     <div>
-        <input type="text" className="form-control form-control" id="headingText" placeholder={widget.type}></input>
+        <input onChange={() => headingTextChanged(widget.id, inputElem.value)}
+               ref={node => inputElem = node}
+               value={widget.text} type="text" className="form-control form-control" id="headingText" placeholder="Widget text"></input>
         <p></p>
-        <select className="form-control" id="headingSize">
-            <option> Choose size </option>
-            <option>Heading 1</option>
-            <option>Heading 2</option>
-            <option>Heading 3</option>
-            <option>Heading 4</option>
-            <option>Heading 5</option>
-            <option>Heading 6</option>
+        <select className="form-control" onChange={() => headingSizeChanged(widget.id, selectElem.value)}
+                value={widget.size}
+                ref={node => selectElem = node}>
+            <option value="1">Heading 1</option>
+            <option value="2">Heading 2</option>
+            <option value="3">Heading 3</option>
         </select>
         <p></p>
-        <input type="text" className="form-control form-control" id="widgetName" placeholder="Widget Name"/>
+        <input type="text" onChange={() => widgetNameChanged(widget.id, inputWidgetNameElem.value)}
+                           ref={node => inputWidgetNameElem = node}
+                           value={widget.name} className="form-control form-control" id="widgetName" placeholder="Widget Name" />
         <p></p>
         <h4> Preview </h4>
-        <label> <h1>Heading</h1> </label>
+        {widget.size == 1 && <h1>{widget.text}</h1>}
+        {widget.size == 2 && <h2>{widget.text}</h2>}
+        {widget.size == 3 && <h3>{widget.text}</h3>}
         <p></p>
     </div>
+    )
+}
 
-)
+const dispatchToPropsMapper = dispatch => ({
+    headingTextChanged: (widgetId,newText) =>
+        actions.headingTextChanged(dispatch,widgetId,newText),
+    headingSizeChanged: (widgetId, newSize) =>
+        actions.headingSizeChanged(dispatch, widgetId, newSize),
+    widgetNameChanged: (widgetId,newWidgetName) =>
+        actions.widgetNameChanged(dispatch,widgetId,newWidgetName)
+
+})
+
+
+const HeadingContainer = connect(null,dispatchToPropsMapper) (Heading)
 
 const Paragraph = (widget) => (
   <div>
@@ -101,7 +124,7 @@ const Widget = ({widget, dispatch}) => {
     let selectElement
     return (
     <form>
-        <div className="container" style={{"border": "solid #dcdbdb 1px", "width": "150%", "marginTop": "24px","marginBottom":"38px","backgroundColor":"white","paddingTop":"20px"}}>
+        <div className="container" style={{"border": "solid #dcdbdb 1px", "width": "150%", "marginTop": "24px","marginBottom":"-21px","backgroundColor":"white","paddingTop":"20px"}}>
             <div style={{"display": "inline-flex", "width": "100%"}}>
                 <h3 style={{"width": "100%"}}> {widget.widgetType} widget </h3>
                 <button style={{"marginRight": "3px", "marginTop": "5px", "marginBottom": "3px"}}
@@ -125,7 +148,7 @@ const Widget = ({widget, dispatch}) => {
                     dispatch({type: DELETE_WIDGET, id: widget.id})
                 )}><i className="fa fa-times"></i></button>
             </div>
-            {widget.widgetType === 'Heading' && <Heading/>}
+            {widget.widgetType==='Heading' && <HeadingContainer widget={widget}/>}
             {widget.widgetType === 'Paragraph' && <Paragraph/>}
             {widget.widgetType === 'Link' && <Link/>}
             {widget.widgetType === 'List' && <List/>}

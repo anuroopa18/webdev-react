@@ -22,6 +22,8 @@ export default class LessonTabs extends Component{
         this.deleteLesson = this.deleteLesson.bind(this);
         this.lessonService = LessonService.instance;
 
+
+
     }
 
     componentWillReceiveProps(newProps){
@@ -76,12 +78,14 @@ export default class LessonTabs extends Component{
                                    courseId={this.state.courseId}
                                    moduleId={this.state.moduleId}
                                    delete={this.deleteLesson}/>
+
         });
+
         return lessons;
     }
 
     render(){ return(
-        <Router>
+
         <div>
          <div>
 
@@ -108,12 +112,13 @@ export default class LessonTabs extends Component{
 
                       <Route path="/course/:courseId/module/:moduleId/lesson/:lessonId" lessonId={this.state.lesson.id}
                              component={LessonEditor}/>
+
                   </div>
 
               </div>
         </div>
         </div>
-        </Router>
+
 
     )
 

@@ -91,7 +91,7 @@ export default class ModuleList extends React.Component {
     render() {
         return (
 
-            <Router>
+
             <div className="row">
                 <div className="col-4" >
                     <div style={{
@@ -119,6 +119,6 @@ export default class ModuleList extends React.Component {
 
                 </div>
             </div>
-            </Router>
+
 
     )}}

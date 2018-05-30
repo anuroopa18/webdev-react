@@ -48,6 +48,15 @@ export default class ModuleService {
 
     }
 
+    findLessonById(lessonId){
+        return fetch(
+            LESSON_API_URL_1
+                .replace('LID', lessonId))
+            .then(function (response) {
+                return response.json();
+            })
+
+    }
 
 
     static get instance() {
