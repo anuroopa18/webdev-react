@@ -58,7 +58,7 @@ export const widgetReducer = (state={widgets:[],preview:false,changes:false},act
             return Object.assign({} , {
                 widgets:state.widgets,
                 preview: !state.preview,
-                changes: state.changes
+                changes: false
 
 
             })
