@@ -55,12 +55,13 @@ export const widgetReducer = (state={widgets:[],preview:false,changes:false},act
 
         case PREVIEW:
 
-            return {
+            return Object.assign({} , {
                 widgets:state.widgets,
                 preview: !state.preview,
-                changes:true
+                changes: state.changes
 
-            }
+
+            })
 
         case LIST_TEXT_CHANGED:
 
@@ -194,8 +195,9 @@ export const widgetReducer = (state={widgets:[],preview:false,changes:false},act
                         alert("Widget name already exists!!!");
                     }
             })
+            state.changes = false;
 
-            return state
+            return Object.assign({},state);
         case FIND_ALL_WIDGETS:
             return{
                 widgets:action.widgets,

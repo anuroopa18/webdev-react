@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import * as actions from "../actions/index";
 import WidgetContainer from '../components/Widget'
+import {Prompt} from 'react-router-dom'
 
 
 let lsnId
@@ -22,7 +23,9 @@ class WidgetList extends Component  {
     render(){
         return(
             <div>
-
+                <Prompt
+                    when={this.props.changes}
+                    message="Are you sure you want to leave? "/>
                 <div className="container" style={{"paddingBottom": "18px", "width": "150%", "marginTop": "14px"}}>
                     <div style={{"display": "inline-flex", "float": "right"}}>
                         <button hidden={this.props.previewMode} style={{"marginRight": "6px", "marginTop": "0px", "marginBottom": "11px"}}
@@ -39,7 +42,8 @@ class WidgetList extends Component  {
                     {this.props.widgets.map(widget => (
                         <WidgetContainer widget={widget}
                                          preview={this.props.previewMode}
-                                         key={widget.id}/>
+                                         key={widget.id}
+                        changes={this.props.changes}/>
                     ))}
                 </ul>
                 <div className="col-lg-1" style={{"display": "inline-flex", "float": "right"}}>
