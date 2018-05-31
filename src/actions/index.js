@@ -1,7 +1,7 @@
 import {ADD_WIDGET, FIND_ALL_WIDGETS, SAVE,FIND_WIDGETS_FOR_LESSON,HEADING_SIZE_CHANGED,HEADING_TEXT_CHANGED,WIDGET_NAME_CHANGED,PARAGRAPH_TEXT_CHANGED,LINK_CHANGED,LINK_NAME_CHANGED,LINK_TEXT_CHANGED,LIST_TYPE_CHANGED,LIST_TEXT_CHANGED,PREVIEW,MOVE_UP} from "../constants/index";
 
 export const findAllWidgets = dispatch => {
-    fetch('http://localhost:8080/api/widget')
+    fetch('https://webdev-smr1.herokuapp.com/api/widget')
         .then(response => (response.json()))
         .then(widgets => dispatch({
             type:FIND_ALL_WIDGETS,
@@ -81,7 +81,7 @@ export const widgetNameChanged = (dispatch, widgetId, newWidgetName) => (
 )
 
 export const findWidgetsForLesson = (dispatch,lessonId) => {
-    fetch('http://localhost:8080/api/lesson/'+lessonId+'/widget')
+    fetch('https://webdev-smr1.herokuapp.com/api/lesson/'+lessonId+'/widget')
         .then(response => (response.json()))
         .then(widgets => dispatch({
             type:FIND_WIDGETS_FOR_LESSON,

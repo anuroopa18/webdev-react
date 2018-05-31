@@ -1,8 +1,8 @@
 const LESSON_API_URL =
-    'http://localhost:8080/api/course/CID/module/MID/lesson';
+    'https://webdev-smr1.herokuapp.com/api/course/CID/module/MID/lesson';
 
 const LESSON_API_URL_1 =
-    'http://localhost:8080/api/lesson/LID';
+    'https://webdev-smr1.herokuapp.com/api/lesson/LID';
 
 const LESSON_API_URL_2 ='http://localhost:8080/api/lesson';
 
