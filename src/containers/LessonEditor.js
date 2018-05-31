@@ -4,6 +4,7 @@ import {createStore} from 'redux';
 import {widgetReducer} from '../reducers/widgetReducer'
 import {App} from '../containers/WidgetList'
 import LessonService from '../services/LessonService'
+import { Prompt } from 'react-router-dom'
 
 
 
@@ -37,7 +38,6 @@ export default class LessonEditor extends React.Component {
 
     setLessonId(lessonId){
         this.setState({lessonId: lessonId});
-        console.log(this.state.lessonId);
 
     }
 
@@ -72,7 +72,14 @@ export default class LessonEditor extends React.Component {
     render() {
         return (
             <Provider store={store}>
+                <div>
+                <Prompt
+                    when={this.state.changes}
+                    message="Are you sure you want to leave? Do you want to save?"/>
+
                 <App lessonId={this.state.lessonId}/>
-            </Provider>
+                </div>
+                 </Provider>
+
 
         )}}

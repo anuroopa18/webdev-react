@@ -26,7 +26,7 @@ class WidgetList extends Component  {
                 <div className="container" style={{"paddingBottom": "18px", "width": "150%", "marginTop": "14px"}}>
                     <div style={{"display": "inline-flex", "float": "right"}}>
                         <button hidden={this.props.previewMode} style={{"marginRight": "6px", "marginTop": "0px", "marginBottom": "11px"}}
-                                className="btn btn-success" onClick={e => {if(this.props.save(lsnId)) window.alert("Details saved")}} >Save
+                                className="btn btn-success" onClick={e => {this.props.save(lsnId)}} >Save
                         </button>
                         <label style={{"fontWeight": "bold", "paddingTop": "6px"}}>Preview</label>
                         <label className="switch"><input onClick={this.props.preview} type="checkbox"
@@ -42,8 +42,11 @@ class WidgetList extends Component  {
                                          key={widget.id}/>
                     ))}
                 </ul>
-                <button onClick={this.props.addWidget} style={{"marginTop":"20px"}}>Add widget
+                <div className="col-lg-1" style={{"display": "inline-flex", "float": "right"}}>
+                <button className="btn btn-danger" onClick={this.props.addWidget} style={{"marginTop":"20px","marginLeft":"1087%"}}><i
+                    className="fa fa-plus-circle"></i>
                 </button>
+                </div>
             </div>
         )
     }
@@ -54,7 +57,9 @@ const stateToPropertiesMapper =(state,lessonIdProp) => (
     {
         widgets: state.widgets,
         lessonId: lessonIdProp.lessonId,
-        previewMode:state.preview
+        previewMode:state.preview,
+        changes:state.changes
+
     }
 )
 

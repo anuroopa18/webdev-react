@@ -22,7 +22,6 @@ export default class CourseEditor
         this.courseService.findCourseById(courseId)
             .then((course) => {
                 this.setState({course: course});
-                console.log(this.state.course);
             })
     }
 

@@ -25,7 +25,6 @@ export default class ModuleEditor
         this.moduleService.findModuleById(moduleId)
             .then((module) => {
                 this.setState({module: module});
-                console.log(this.state.module);
             })
     }
 
